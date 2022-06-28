@@ -193,3 +193,108 @@ switch(calificacion) {
         break;
 }
 
+/// ciclos, bucles, loops
+for (let i=0; i<5; i++){  //inicio, condicion, incremento
+    console.log('ciclo: ', i);
+}
+console.log('ciclo terminado');
+
+/// while controla primero la condicion
+let i=0; //inicio afuera
+
+while(i<5){ //condicion
+    console.log('ciclo: ', i);
+    i++; //incremento
+}
+console.log('ciclo terminado');
+
+let i=0; //inicio afuera
+
+while(i<5){ //condicion
+    console.log('ciclo: ', i);
+    i++; //incremento
+}
+console.log('ciclo terminado');
+
+let i=0; //inicio afuera
+
+do{ //hace sin reparar en la condicion
+    console.log('ciclo: ', i);
+    i++; //incremento
+}while(i < -5); //condicion y ;
+console.log('ciclo terminado');
+
+////Recorre un array con for
+
+let arreglo = [10,20,30,40,50,60,70,80,90];
+for(let i=0; i<arreglo.length; i++){
+    console.log(`Elemento ${i}, valor ${arreglo[i]}.`)
+}
+
+/// encontrar al ganador, break y continue
+let puntajes = [50, 25, 0, 30, 100, 20, 10, 35, 70];
+
+for(let i=0;i<puntajes.length;i++){
+    if(puntajes[i]<30 ){
+        continue;
+        console.log("hola");} 
+    // continue es para que siga e ignore
+    // y salga de la estructura y siga con el codigo
+    console.log('Tu puntaja es:', puntajes[i]);
+    if (puntajes[i]===100){
+        console.log('Felicidades sos el ganador!');
+        break;
+    }
+}
+////// Factura mejorada
+
+const electrodomesticos = [
+    {nombre:'Televisor', precio: 40000, color:'Gris'},
+    {nombre:'Heladera', precio: 80000, color:'Blanco'},
+    {nombre:'PC', precio: 140000, color:'Negro'},
+    {nombre:'Licuadora', precio: 10000, color:'Rojo'},
+    {nombre:'Aspiradora', precio: 15000, color:'Gris'},
+    {nombre:'Parlante', precio: 9000, color:'Negro'},
+    {nombre:'Microondas', precio: 60000, color:'Gris'},
+    {nombre:'Lavarropa', precio: 80000, color:'Blanco'},
+]
+
+const impuestosPorProductos=[
+    {nombre:'IVA', importe: 0.21},
+    {nombre:'Importación', importe: 0.3},
+    {nombre:'Ingresos Brutos', importe: 0.1},
+]
+
+// funcion tendra dos entradas: productos e impuestos
+function imprimirFactura(productos, impuestos) {
+
+    let total = 0;
+    let precioConImpuestos = 0;
+    let precioSinImpuestos = 0;
+    let impuestosSobrePrecio = 0;
+
+
+    // recorro todo el objeto de electrodomesticos
+    for(let i=0; i<productos.length;i++){
+
+        // console.log(productos[i].color);
+
+        precioSinImpuestos = productos[i].precio;
+
+        for(let j=0; j<impuestos.length;j++){
+            impuestosSobrePrecio = 
+                impuestosSobrePrecio + 
+                    (precioSinImpuestos * impuestos[j].importe);
+        }
+              
+
+        // calculo el total
+        precioConImpuestos = precioSinImpuestos + impuestosSobrePrecio;
+        total = total + precioConImpuestos;
+        console.log(productos[i].nombre, '$Arg:', impuestosSobrePrecio);
+    
+    }
+    console.log('El total facturado es $Arg:', total);
+}
+
+imprimirFactura(electrodomesticos, impuestosPorProductos);
